@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models  # pyright: ignore[reportMissingImports]
 
 
 class PokeStoreFigure(models.Model):
@@ -8,7 +8,16 @@ class PokeStoreFigure(models.Model):
 
     name = fields.Char(string="Nombre", required=True)
     pokemon = fields.Char(string="Pokémon", required=True)
-    collection = fields.Char(string="Colección")
+    collection_id = fields.Many2one(
+        "pokestore.collection", string="Colección", ondelete="restrict"
+    )
+    tag_ids = fields.Many2many(
+        "pokestore.tag",
+        "figure_tag_rel",
+        "figure_id",
+        "tag_id",
+        string="Etiquetas",
+    )
     rarity = fields.Selection(
         [
             ("normal", "Normal"),

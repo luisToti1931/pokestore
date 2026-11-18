@@ -5,12 +5,12 @@
         <field name="model">pokestore.figure</field>
         <field name="arch" type="xml">
             <list string="Figuras">
-                <field name="name"/>
-                <field name="pokemon"/>
-                <field name="collection"/>
-                <field name="rarity"/>
-                <field name="price"/>
-                <field name="stock"/>
+                <field name="name" />
+                <field name="pokemon" />
+                <field name="collection" />
+                <field name="rarity" />
+                <field name="price" />
+                <field name="stock" />
             </list>
         </field>
     </record>
@@ -23,16 +23,19 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="pokemon"/>
-                            <field name="collection"/>
+                            <field name="name" />
+                            <field name="pokemon" />
+                            <field name="collection" />
                         </group>
                         <group>
-                            <field name="rarity"/>
-                            <field name="price"/>
-                            <field name="stock"/>
-                            <field name="active"/>
+                            <field name="rarity" />
+                            <field name="price" />
+                            <field name="stock" />
+                            <field name="active" />
                         </group>
+                    </group>
+                    <group>
+                        <field name="tag_ids" widget="many2many_tags" />
                     </group>
                 </sheet>
             </form>
@@ -42,6 +45,62 @@
     <record id="pokestore_figure_action" model="ir.actions.act_window">
         <field name="name">Figuras</field>
         <field name="res_model">pokestore.figure</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="pokestore_figure_view_search" model="ir.ui.view">
+        <field name="name">pokestore.figure.search</field>
+        <field name="model">pokestore.figure</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Figuras">
+                <field name="name" />
+                <field name="pokemon" />
+                <field name="collection_id" />
+                <filter name="filter_exclusive" string="Exclusivas"
+                    domain="[('rarity', '=', 'exclusive')]" />
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_by_collection" string="Colección"
+                        context="{'group_by': 'collection_id'}" />
+                    <filter name="group_by_rarity" string="Rareza" context="{'group_by': 'rarity'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="pokestore_collection_view_list" model="ir.ui.view">
+        <field name="name">pokestore.collection.list</field>
+        <field name="model">pokestore.collection</field>
+        <field name="arch" type="xml">
+            <list string="Colecciones">
+                <field name="name" />
+                <field name="pokemon" />
+                <field name="price" />
+                <field name="stock" />
+                <field name="active" />
+            </list>
+        </field>
+    </record>
+
+    <record id="pokestore_collection_view_form" model="ir.ui.view">
+        <field name="name">pokestore.collection.form</field>
+        <field name="model">pokestore.collection</field>
+        <field name="arch" type="xml">
+            <form string="Colección">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="pokemon" />
+                        <field name="price" />
+                        <field name="stock" />
+                        <field name="active" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pokestore_collection_action" model="ir.actions.act_window">
+        <field name="name">Colecciones</field>
+        <field name="res_model">pokestore.collection</field>
         <field name="view_mode">list,form</field>
     </record>
 </odoo>

@@ -1,1 +1,1 @@
-from . import figure
+from . import figure, collection, tag
