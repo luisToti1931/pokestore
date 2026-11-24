@@ -11,6 +11,9 @@
         "views/pokestore_menus.xml",
         "data/pokestore_collection_data.xml",
     ],
+    "demo": [
+        "demo/pokestore_demo.xml",
+    ],
     "application": True,
     "installable": True,
 }

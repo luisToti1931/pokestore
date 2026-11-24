@@ -72,6 +72,8 @@
         <field name="arch" type="xml">
             <list string="Colecciones">
                 <field name="name" />
+                <field name="generation" />
+                <field name="release_date" />
                 <field name="pokemon" />
                 <field name="price" />
                 <field name="stock" />
@@ -88,6 +90,8 @@
                 <sheet>
                     <group>
                         <field name="name" />
+                        <field name="generation" />
+                        <field name="release_date" />
                         <field name="pokemon" />
                         <field name="price" />
                         <field name="stock" />
