@@ -1,4 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Tutorial 04: datos maestros -->
+      <record id="collection_kanto" model="pokestore.collection">
+        <field name="name">Kanto Classics</field>
+        <field name="pokemon">Varios</field>
+        <field name="price">49.99</field>
+        <field name="stock">10</field>
+    </record>
+
+    <record id="collection_johto" model="pokestore.collection">
+        <field name="name">Johto Legends</field>
+        <field name="pokemon">Varios</field>
+        <field name="price">59.99</field>
+        <field name="stock">8</field>
+    </record>
+
+    <!-- Etiquetas -->
+    <record id="tag_fire" model="pokestore.tag">
+        <field name="name">Fuego</field>
+    </record>
+
+    <record id="tag_electric" model="pokestore.tag">
+        <field name="name">Eléctrico</field>
+    </record>
+
+    <!-- Figuras -->
+    <record id="figure_charizard" model="pokestore.figure">
+        <field name="name">Charizard Deluxe</field>
+        <field name="pokemon">Charizard</field>
+        <field name="collection_id" ref="collection_kanto" />
+        <field name="tag_ids" eval="[(4, ref('tag_fire'))]" />
+        <field name="rarity">rare</field>
+        <field name="price">29.99</field>
+        <field name="stock">5</field>
+    </record>
+
+    <record id="figure_pikachu" model="pokestore.figure">
+        <field name="name">Pikachu Edición Limitada</field>
+        <field name="pokemon">Pikachu</field>
+        <field name="collection_id" ref="collection_kanto" />
+        <field name="tag_ids" eval="[(4, ref('tag_electric'))]" />
+        <field name="rarity">exclusive</field>
+        <field name="price">39.99</field>
+        <field name="stock">3</field>
+    </record>
 </odoo>

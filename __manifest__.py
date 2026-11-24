@@ -9,6 +9,7 @@
         "security/ir.model.access.csv",
         "views/pokestore_figure_views.xml",
         "views/pokestore_menus.xml",
+        "data/pokestore_collection_data.xml",
     ],
     "application": True,
     "installable": True,
